@@ -64,12 +64,19 @@ public class MainActivity extends AppCompatActivity {
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if("".equals(editText.getText())){
+                    filename=CreateRandomAudioFileName(random.nextInt());
+                }
+                else {
+                    filename = "" + editText.getText();
+                }
 
                 if (checkPermission()) {
 
                     AudioSavePathInDevice =
                             Environment.getExternalStorageDirectory().getAbsolutePath() + "/" +
-                                    editText.getText() + ".3gp";
+                                   filename + ".3gp";
+
 
                     MediaRecorderReady();
 
